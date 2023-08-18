@@ -17,6 +17,7 @@ const Balance: React.FC<Props> = ({ address, refresh }) => {
   const fetchBalance = async () => {
     try {
       setIsLoading(true);
+      setBalance(null);
       const response = await axios.get(`${BASE_URL}/api/balance/${address}`);
       setBalance(response.data.balance);
       setIsLoading(false);

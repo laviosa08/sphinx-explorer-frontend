@@ -18,6 +18,7 @@ const TransactionList: React.FC<Props> = ({ address, refresh }) => {
   const fetchTransactions = async () => {
     try {
       setIsLoading(true);
+      setTransactions([]);
       const response = await axios.get(
         `${BASE_URL}/api/transactions/${address}`
       );
@@ -26,6 +27,7 @@ const TransactionList: React.FC<Props> = ({ address, refresh }) => {
       setIsLoading(false);
     } catch (error) {
       console.error(error);
+      window.alert('Please enter a valid address');
       setIsLoading(false);
     }
   };
